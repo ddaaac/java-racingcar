@@ -51,6 +51,6 @@ public class CarTest {
 		car.move(4);
 		car.move(4);
 
-		assertThat(car.isMaxPosition(maxPosition)).isEqualTo(expected);
+		assertThat(car.isSamePosition(maxPosition)).isEqualTo(expected);
 	}
 }
