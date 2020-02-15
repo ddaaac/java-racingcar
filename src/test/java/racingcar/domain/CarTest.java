@@ -26,10 +26,11 @@ public class CarTest {
 	}
 
 	@ParameterizedTest
-	@CsvSource(value = {"0 false", "3 false", "4 true", "9 true"}, delimiter = ' ')
-	void 이동조건(int value, boolean expected) {
+	@CsvSource(value = {"0 0", "3 0", "4 1", "9 1"}, delimiter = ' ')
+	void 이동조건(int value, int expected) {
 		Car car = new Car("bumbl");
-		assertThat(car.move(value)).isEqualTo(expected);
+		car.move(value);
+		assertThat(car.getPosition()).isEqualTo(expected);
 	}
 
 	@Test

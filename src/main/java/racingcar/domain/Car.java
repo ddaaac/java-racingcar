@@ -21,12 +21,10 @@ public class Car {
 		}
 	}
 
-	public boolean move(int randomValue) {
+	public void move(int randomValue) {
 		if (randomValue >= MINIMUM_MOVE_NUMBER) {
 			position++;
-			return true;
 		}
-		return false;
 	}
 
 	public int getBiggerPosition(int positionToCompare) {
