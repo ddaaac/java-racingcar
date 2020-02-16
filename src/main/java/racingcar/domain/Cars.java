@@ -31,7 +31,7 @@ public class Cars {
 	}
 
 	public void moveAll() {
-		cars.forEach(car -> car.move(RandomGenerator.generateRandom()));
+		cars.forEach(car -> car.move(RandomGenerator.generateRandomNumber()));
 	}
 
 	public List<Car> getWinners() {
