@@ -1,6 +1,8 @@
 package racingcar.domain;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
@@ -18,5 +20,14 @@ public class PositionTest {
 		Position position = new Position(0);
 		position.addOne();
 		assertThat(position.getPosition()).isEqualTo(1);
+	}
+
+	@ParameterizedTest
+	@CsvSource(value = {"3 1", "4 2", "5 3"}, delimiter = ' ')
+	void 포지션_비교(int pos1, int pos2) {
+		Position position1 = new Position(pos1);
+		Position position2 = new Position(pos2);
+
+		assertThat(position1.biggerPosition(position2).getPosition()).isEqualTo(position1.getPosition());
 	}
 }

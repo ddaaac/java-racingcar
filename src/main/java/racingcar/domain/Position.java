@@ -23,4 +23,11 @@ public class Position {
 	public int getPosition() {
 		return position;
 	}
+
+	public Position biggerPosition(Position positionToCompare) {
+		if (this.position > positionToCompare.position) {
+			return this;
+		}
+		return positionToCompare;
+	}
 }
