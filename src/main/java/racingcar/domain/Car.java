@@ -21,8 +21,8 @@ public class Car {
 		}
 	}
 
-	public void move(int randomValue) {
-		if (randomValue >= MINIMUM_MOVE_NUMBER) {
+	public void move(int value) {
+		if (value >= MINIMUM_MOVE_NUMBER) {
 			position++;
 		}
 	}
