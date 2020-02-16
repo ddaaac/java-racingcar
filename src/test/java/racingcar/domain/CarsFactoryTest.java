@@ -4,8 +4,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
-import java.util.Arrays;
-import java.util.List;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
@@ -14,7 +12,6 @@ public class CarsFactoryTest {
 	@ParameterizedTest
 	@MethodSource("generateInput_중복")
 	void 이름_중복(String input) {
-
 		assertThatThrownBy(() -> CarsFactory.createCars(input))
 				.isInstanceOf(IllegalArgumentException.class)
 				.hasMessageContaining("중복된 이름이 존재합니다.");
@@ -35,6 +32,6 @@ public class CarsFactoryTest {
 
 	static Stream<Arguments> generateInput_최소_대수() {
 		return Stream.of(Arguments.of("aaa"),
-				(Arguments.of("")));
+				(Arguments.of("aeiou")));
 	}
 }
