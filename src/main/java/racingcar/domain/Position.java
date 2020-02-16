@@ -25,9 +25,13 @@ public class Position {
 	}
 
 	public Position biggerPosition(Position positionToCompare) {
-		if (this.position > positionToCompare.position) {
+		if (position > positionToCompare.position) {
 			return this;
 		}
 		return positionToCompare;
+	}
+
+	public boolean isSamePosition(Position positionToCompare) {
+		return position == positionToCompare.position;
 	}
 }

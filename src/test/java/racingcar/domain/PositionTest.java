@@ -30,4 +30,13 @@ public class PositionTest {
 
 		assertThat(position1.biggerPosition(position2).getPosition()).isEqualTo(position1.getPosition());
 	}
+
+	@ParameterizedTest
+	@CsvSource(value = {"3 1 false", "4 4 true", "5 3 false"}, delimiter = ' ')
+	void 포지션_같은지_확인(int pos1, int pos2, boolean expected) {
+		Position position1 = new Position(pos1);
+		Position position2 = new Position(pos2);
+
+		assertThat(position1.isSamePosition(position2)).isEqualTo(expected);
+	}
 }
