@@ -1,6 +1,5 @@
 package racingcar.domain;
 
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -15,7 +14,7 @@ public class CarTest {
 	@ParameterizedTest
 	@MethodSource("generateInput")
 	void 이름_길이_1이상_5이하(String input) {
-		assertThatThrownBy(() -> new Car(input))
+		assertThatThrownBy(() -> new Car(input, new Position(Position.INITIAL_POSITION)))
 				.isInstanceOf(IllegalArgumentException.class)
 				.hasMessageContaining("의 길이가 1~5 사이에 있지 않습니다.");
 	}
@@ -28,29 +27,27 @@ public class CarTest {
 	@ParameterizedTest
 	@CsvSource(value = {"0 0", "3 0", "4 1", "9 1"}, delimiter = ' ')
 	void 이동조건(int value, int expected) {
-		Car car = new Car("bumbl");
+		Car car = new Car("bumbl", new Position(Position.INITIAL_POSITION));
 		car.move(value);
-		assertThat(car.getPosition()).isEqualTo(expected);
-	}
-
-	@Test
-	void 큰_포지션_반환() {
-		Car car = new Car("a");
-		car.move(4);
-		car.move(4);
-
-		assertThat(car.getBiggerPosition(3)).isEqualTo(3);
-		assertThat(car.getBiggerPosition(1)).isEqualTo(2);
+		assertThat(car.getPosition().getPositionValue()).isEqualTo(expected);
 	}
 
 	@ParameterizedTest
-	@CsvSource(value = {"2:true", "3:false"}, delimiter = ':')
-	void 포지션이_2인_자동차와_비교하여_우승_확인(int maxPosition, boolean expected) {
-		Car car = new Car("a");
+	@CsvSource(value = {"3 5 5", "4 0 4"}, delimiter = ' ')
+	void 큰_포지션_반환(int pos1, int pos2, int expectedPos) {
+		Car car1 = new Car("a", new Position(pos1));
+		Car car2 = new Car("a", new Position(pos2));
 
-		car.move(4);
-		car.move(4);
+		assertThat(car1.biggerPosition(car2.getPosition())
+				.getPositionValue()).isEqualTo(expectedPos);
+	}
 
-		assertThat(car.isSamePosition(maxPosition)).isEqualTo(expected);
+	@ParameterizedTest
+	@CsvSource(value = {"2:2:true", "3:2:false", "4:3:false"}, delimiter = ':')
+	void 포지션_같은지_확(int pos1, int pos2, boolean expected) {
+		Car car1 = new Car("a", new Position(pos1));
+		Car car2 = new Car("a", new Position(pos2));
+
+		assertThat(car1.isSamePosition(car2.getPosition())).isEqualTo(expected);
 	}
 }

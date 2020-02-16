@@ -1,18 +1,17 @@
 package racingcar.domain;
 
 public class Car {
-	static final int INITIAL_POSITION = 0;
 	private static final int MINIMUM_LENGTH_OF_CAR_NAME = 1;
 	private static final int MAXIMUM_LENGTH_OF_CAR_NAME = 5;
 	private static final int MINIMUM_MOVE_NUMBER = 4;
 
 	private final String name;
-	private int position;
+	private Position position;
 
-	public Car(String name) {
+	public Car(String name, Position position) {
 		validateLengthOfCarName(name);
 		this.name = name;
-		this.position = INITIAL_POSITION;
+		this.position = position;
 	}
 
 	private void validateLengthOfCarName(String name) {
@@ -23,23 +22,23 @@ public class Car {
 
 	public void move(int value) {
 		if (value >= MINIMUM_MOVE_NUMBER) {
-			position++;
+			position.addOne();
 		}
 	}
 
-	public int getBiggerPosition(int positionToCompare) {
-		return Math.max(position, positionToCompare);
+	public Position biggerPosition(Position positionToCompare) {
+		return position.biggerPosition(positionToCompare);
 	}
 
-	public boolean isSamePosition(int position) {
-		return this.position == position;
+	public boolean isSamePosition(Position positionToCompare) {
+		return position.isSamePosition(positionToCompare);
 	}
 
 	public String getName() {
 		return name;
 	}
 
-	public int getPosition() {
+	public Position getPosition() {
 		return position;
 	}
 }

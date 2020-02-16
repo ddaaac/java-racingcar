@@ -39,7 +39,7 @@ public class OutputView {
 		StringBuilder stringBuilder = new StringBuilder();
 
 		stringBuilder.append(car.getName()).append(COLON);
-		for (int i = 0; i < car.getPosition(); i++) {
+		for (int i = 0; i < car.getPosition().getPositionValue(); i++) {
 			stringBuilder.append(DASH);
 		}
 

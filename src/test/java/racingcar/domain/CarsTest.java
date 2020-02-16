@@ -12,18 +12,10 @@ public class CarsTest {
 
 	@BeforeEach
 	void setUp() {
-		Car car1 = new Car("a");
-		Car car2 = new Car("b");
-		Car car3 = new Car("c");
-		for (int i = 0; i < 3; i++) {
-			car1.move(4);
-		}
-		for (int i = 0; i < 5; i++) {
-			car2.move(4);
-		}
-		for (int i = 0; i < 5; i++) {
-			car3.move(4);
-		}
+		Car car1 = new Car("a", new Position(3));
+		Car car2 = new Car("b", new Position(5));
+		Car car3 = new Car("c", new Position(5));
+
 		cars = new Cars(Arrays.asList(car1, car2, car3));
 	}
 
@@ -40,6 +32,6 @@ public class CarsTest {
 
 	@Test
 	void 우승자_포지션() {
-		assertThat(cars.getWinners().get(0).getPosition()).isEqualTo(5);
+		assertThat(cars.getWinners().get(0).getPosition().getPositionValue()).isEqualTo(5);
 	}
 }

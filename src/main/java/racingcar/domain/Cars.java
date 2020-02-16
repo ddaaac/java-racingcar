@@ -36,14 +36,14 @@ public class Cars {
 
 	public List<Car> getWinners() {
 		return cars.stream()
-				.filter(car -> car.isSamePosition(getMaxPosition()))
+				.filter(car -> car.isSamePosition(maxPosition()))
 				.collect(Collectors.toUnmodifiableList());
 	}
 
-	private int getMaxPosition() {
-		int maxPosition = Car.INITIAL_POSITION;
+	private Position maxPosition() {
+		Position maxPosition = new Position(Position.INITIAL_POSITION);
 		for (Car car : cars) {
-			maxPosition = car.getBiggerPosition(maxPosition);
+			maxPosition = car.biggerPosition(maxPosition);
 		}
 
 		return maxPosition;

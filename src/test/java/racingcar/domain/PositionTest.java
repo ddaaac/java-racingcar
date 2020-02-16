@@ -19,7 +19,7 @@ public class PositionTest {
 	void 포지션_한칸_증가() {
 		Position position = new Position(0);
 		position.addOne();
-		assertThat(position.getPosition()).isEqualTo(1);
+		assertThat(position.getPositionValue()).isEqualTo(1);
 	}
 
 	@ParameterizedTest
@@ -28,7 +28,7 @@ public class PositionTest {
 		Position position1 = new Position(pos1);
 		Position position2 = new Position(pos2);
 
-		assertThat(position1.biggerPosition(position2).getPosition()).isEqualTo(position1.getPosition());
+		assertThat(position1.biggerPosition(position2).getPositionValue()).isEqualTo(position1.getPositionValue());
 	}
 
 	@ParameterizedTest

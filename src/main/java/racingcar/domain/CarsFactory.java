@@ -14,7 +14,7 @@ public class CarsFactory {
 		List<String> carsName = removeSpaceAndSplit(carsNameInput);
 		List<Car> cars = new ArrayList<>();
 
-		carsName.forEach(carName -> cars.add(new Car(carName)));
+		carsName.forEach(carName -> cars.add(new Car(carName, new Position(Position.INITIAL_POSITION))));
 		return new Cars(cars);
 	}
 
