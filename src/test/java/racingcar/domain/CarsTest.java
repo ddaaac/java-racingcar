@@ -5,7 +5,8 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
+
 
 public class CarsTest {
 	private Cars cars;
@@ -33,5 +34,10 @@ public class CarsTest {
 	@Test
 	void 우승자_포지션() {
 		assertThat(cars.getWinners().get(0).getPosition().getPositionValue()).isEqualTo(5);
+	}
+
+	@Test
+	void 우승자_포함() {
+		assertThat(cars.getCars()).contains(new Car("a", new Position(3)));
 	}
 }

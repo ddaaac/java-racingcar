@@ -5,5 +5,6 @@ public class RandomGenerator {
 
 	public static int generateRandomNumber() {
 		return (int) (Math.random() * RANDOM_RANGE);
+
 	}
 }
